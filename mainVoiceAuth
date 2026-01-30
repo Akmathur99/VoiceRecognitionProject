@@ -39,4 +39,27 @@ def recognize_speech():
       print(f"Error with the recognition service; {e}")
     attempts += 1
     print(attempts)
+print(os.getenv("REPLIT_DB_URL"))
+
+if __name__ == "__main__":
+  recognize_speech()
+db = SQL("sqlite:///database.db")
+
+# database creation
+def database_creation():
+  db.execute(
+      "CREATE TABLE IF NOT EXISTS Mai ( Name TEXT, Year_grp     INTEGER,Form TEXT,Voice_sample TEXT,Word TEXT,Signed_in       TEXT)"
+  )
+  db.execute(
+      "INSERT OR REPLACE INTO Mai  (             Name,Year_grp,Form,Voice_sample,Word,Signed_in) VALUES(?,     ?,?,?,?,?)",
+      'Akarsh', 13, '13R', 'Yes', 'gold', 'No')
+  db.execute(
+      "INSERT OR REPLACE INTO Mai  (                     Name,Year_grp,Form,Voice_sample,Word,Signed_in) VALUES(?,     ?,?,?,?,?)",
+      'Sachin', 11, '10K', 'Yes', '', 'No')
+  db.execute(
+      "INSERT OR REPLACE INTO Mai (   Name,Year_grp,Form,Voice_sample,Word,Signed_in) VALUES(?,      ?,?,?,?,?)",
+      'Haran', 9, '9K', 'Yes', '', 'No')
+
+
+School_data = db.execute("SELECT DISTINCT Word FROM Mai")
     
