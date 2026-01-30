@@ -112,3 +112,20 @@ while is_english_word(word_temp[0]) == False and Empty_word != '':
   word_temp[0:5] = [''.join(word_temp[0:5])]
   Final_studs = ['']
 
+  for i in range(0, len(Empty_word)):
+    Key_Word = str(Empty_word[i])
+    Word_split = Key_Word.split()
+    Word_single = Word_split[1]
+    Word_final = "".join(c for c in Word_single if c.isalpha())
+
+    single_name = Word_final
+print(word_temp)
+with open("common-wordss.txt", "r") as f:
+  lines = f.readlines()
+
+with open("common-wordss.txt", "w") as f:
+  for line in lines:
+    if line.strip("\n") != word_temp[0]:
+      f.write(line)
+
+
