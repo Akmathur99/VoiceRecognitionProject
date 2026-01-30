@@ -1,0 +1,10 @@
+#the ai Model
+from re import split
+from cs50 import SQL
+import os
+from replit import db
+import sounddevice as sd
+from scipy.io.wavfile import write
+import time
+import wavio as wv
+import random
