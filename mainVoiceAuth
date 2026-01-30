@@ -78,3 +78,14 @@ for i in range(0, No_data):
   Name_single = Name_split[1]
   Name_final = "".join(c for c in Name_single if c.isalpha())
   # compares the input word(recognise speech) and the word in the database
+  if Only_word == recognize_speech():
+    db.execute("UPDATE Mai SET Signed_in='Yes' WHERE Name= ?", (Name_final))
+    print(Name_final, 'has signed in')
+    break
+  else:
+    print('No you have been unable to be signed in')
+Empty_word = db.execute(
+    'SELECT Name FROM Mai WHERE ifnull(length(Word), 0) = 0 ')
+print(Empty_word)
+import string
+import random
