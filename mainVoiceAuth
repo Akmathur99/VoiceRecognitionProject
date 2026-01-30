@@ -8,3 +8,15 @@ from scipy.io.wavfile import write
 import time
 import wavio as wv
 import random
+from replit.audio import InvalidFileType
+import speech_recognition as sr
+
+sr.__version__
+def recognize_speech():
+  audioo = ('')
+  attempts = 0
+  while audioo == ('') and attempts < 3:
+    attempts = 0
+    Recognise = sr.Recognizer()
+    aud_file = input('Please enter your file: ')
+    
