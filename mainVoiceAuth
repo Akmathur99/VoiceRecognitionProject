@@ -19,4 +19,20 @@ def recognize_speech():
     attempts = 0
     Recognise = sr.Recognizer()
     aud_file = input('Please enter your file: ')
+    with sr.AudioFile(aud_file) as source:
+      print("Recognising..")
+      aud = Recognise.record(source, duration=10)
+      Recognise.adjust_for_ambient_noise(source)
+    try:
+      audioo = Recognise.recognize_google(aud)
+      print("You said:", audioo)
+      if audioo == '':
+        print('There is no input detected')
+      else:
+        print('There is an input')
+      if attempts < 2:
+        print('Please try again')
+      return (audioo)
+    except sr.UnknownValueError:
+      print("Sorry, could not understand audio and Please Try Again.")
     
