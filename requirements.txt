@@ -1,0 +1,5 @@
+SpeechRecognition==3.11.0
+cs50==3.0.0
+sounddevice==0.4.8
+wavio==0.0.4
+scipy==1.11.2
