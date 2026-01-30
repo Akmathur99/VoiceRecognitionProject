@@ -63,3 +63,18 @@ def database_creation():
 
 School_data = db.execute("SELECT DISTINCT Word FROM Mai")
     
+No_data = len(School_data)
+
+# function in order to isolate the singular words
+for i in range(0, No_data):
+  Keyword = str(School_data[i])
+  Keyword_split = Keyword.split()
+  Single_word = Keyword_split[1]
+  Only_word = "".join(c for c in Single_word if c.isalpha())
+  # Function from builtin.com to remove all the non letters in a code
+  Name_data = db.execute('SELECT DISTINCT Name FROM Mai')
+  Key_Name = str(Name_data[i])
+  Name_split = Key_Name.split()
+  Name_single = Name_split[1]
+  Name_final = "".join(c for c in Name_single if c.isalpha())
+  # compares the input word(recognise speech) and the word in the database
